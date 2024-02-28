@@ -83,7 +83,7 @@ Retrieve data for a single restaurant by its ID.
 
 ```javascript
 const restaurantId = 123; // Replace with the desired restaurant ID
-axios.get(`https://your-api-domain.com/api/restaurants/${restaurantId}`, {
+axios.get(`https://flavourfinder.tjthouhid.com/restaurent.php?restaurant_id={id}`, {
     params: {
         api_key: 'your_api_key'
     }

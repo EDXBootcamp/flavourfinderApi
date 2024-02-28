@@ -47,6 +47,14 @@ axios.post('https://flavourfinder.tjthouhid.com/restaurent.php', {
     console.error(error);
 });
 ```
+- **Response**:
+
+```json
+{
+    "success": true,
+    "message": "Restaurant added successfully"
+}
+```
 
 ### 2. Get All Restaurants
 
@@ -54,6 +62,10 @@ Retrieve a list of all restaurants stored in the database.
 
 - **URL**: `/restaurent.php`
 - **Method**: `GET`
+- **Parameters**:
+    - `restaurant_name` (optional): The name of.
+    - `city` (optional): The city of restaurant.
+    - `country` (optional): The country of restaurant.
 - **Example**:
 
 ```javascript
@@ -68,6 +80,33 @@ axios.get('https://flavourfinder.tjthouhid.com/restaurent.php', {
 .catch(error => {
     console.error(error);
 });
+```
+- **Response**:
+
+```json
+{
+    "success": true,
+    "restaurants": [
+        {
+            "restaurant_id": "1",
+            "restaurant_name": "My Restaurent",
+            "restaurant_type": "Chinese",
+            "city": "Bedford",
+            "country": "England",
+            "total_reviews": "3",
+            "average_rating": "4.00000"
+        },
+        {
+            "restaurant_id": "2",
+            "restaurant_name": "My Restaurent 2",
+            "restaurant_type": "Chinese",
+            "city": "Bedford",
+            "country": "England",
+            "total_reviews": "0",
+            "average_rating": null
+        }
+    ]
+}
 ```
 
 
@@ -95,6 +134,123 @@ axios.get(`https://flavourfinder.tjthouhid.com/restaurent.php?restaurant_id={id}
     console.error(error);
 });
 
+```
+
+- **Response**:
+
+```json
+{
+    "success": true,
+    "restaurant": {
+        "restaurant_id": 1,
+        "restaurant_name": "My Restaurent",
+        "restaurant_type": "Chinese",
+        "city": "Bedford",
+        "country": "England",
+        "total_reviews": 3,
+        "average_rating": "4.00000"
+    }
+}
+```
+
+### 4. Add a Reviews
+
+Add a new review to the restaurent.
+
+- **URL**: `/reviews.php`
+- **Method**: `POST`
+- **Parameters**:
+  - `restaurant_id` (required): The id of the restaurant.
+  - `reviewer_name` (required): The name of the reviewer.
+  - `reviewer_email` (required): The email of the reviewer.
+  - `comment` (optional): Review text detail.
+  - `star_rating` (required): star rating out of 5.
+- **Example**:
+
+```javascript
+axios.post('https://flavourfinder.tjthouhid.com/reviews.php', {
+    reviewer_name: 'Tj Thouhid',
+    reviewer_email: 'tjthouhid@gmail.com',
+    comment: 'Review Text',
+    star_rating: '5'
+}, {
+    params: {
+        api_key: 'your_api_key',
+        restaurant_id: 'restaurant_id'
+    }
+})
+.then(response => {
+    console.log(response.data);
+})
+.catch(error => {
+    console.error(error);
+});
+```
+
+- **Response**:
+
+```json
+{
+    "success": true,
+    "message": "Review added successfully"
+}
+```
+
+### 5. Get All Reviews of restaurent
+
+Retrieve a list of all Reviews by restaurants id in the database.
+
+- **URL**: `/reviews.php`
+- **Method**: `GET`
+- **Example**:
+
+```javascript
+axios.get('https://flavourfinder.tjthouhid.com/restaurent.php', {
+    params: {
+        api_key: 'your_api_key',
+        restaurant_id: 'restaurant_id'
+    }
+})
+.then(response => {
+    console.log(response.data);
+})
+.catch(error => {
+    console.error(error);
+});
+```
+
+- **Response**:
+
+```json
+{
+    "success": true,
+    "reviews": [
+        {
+            "review_id": 1,
+            "restaurant_id": 1,
+            "reviewer_name": "Tj Touhid",
+            "reviewer_email": "tj@test.com",
+            "comment": "Nice Restaurent",
+            "star_rating": "3.0"
+        },
+        {
+            "review_id": 2,
+            "restaurant_id": 1,
+            "reviewer_name": "Tj Touhid",
+            "reviewer_email": "tj@test.com",
+            "comment": "Nice Restaurent",
+            "star_rating": "4.0"
+        },
+        {
+            "review_id": 3,
+            "restaurant_id": 1,
+            "reviewer_name": "Tj Touhid",
+            "reviewer_email": "tj2@test.com",
+            "comment": "Nice Restaurent",
+            "star_rating": "5.0"
+        }
+    ]
+}
 ```
 
 

@@ -27,6 +27,7 @@ Add a new restaurant to the database.
   - `restaurant_type` (optional): The type of restaurant.
   - `city` (required): The city where the restaurant is located.
   - `country` (required): The country where the restaurant is located.
+  - `image` (required): file jpg/jpeg/png.
 - **Example**:
 
 ```javascript
@@ -93,6 +94,7 @@ axios.get('https://flavourfinder.tjthouhid.com/restaurent.php', {
             "restaurant_type": "Chinese",
             "city": "Bedford",
             "country": "England",
+            "image": "https://url..",
             "total_reviews": "3",
             "average_rating": "4.00000"
         },
@@ -102,6 +104,7 @@ axios.get('https://flavourfinder.tjthouhid.com/restaurent.php', {
             "restaurant_type": "Chinese",
             "city": "Bedford",
             "country": "England",
+            "image": "https://url..",
             "total_reviews": "0",
             "average_rating": null
         }
